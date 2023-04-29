@@ -8,12 +8,16 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 public class lienzo extends JPanel {
+	
+	Colores colores = new Colores();
 
     private int[][] pixels;
-    private Color currentColor = Color.BLUE;
     private int cellSize = 40;
     private int rows;
     private int cols;
+    //Color selectedColor = colores.getSelectedColor();
+    
+    
 
     public lienzo(int rows, int cols) {
     	
@@ -44,7 +48,7 @@ public class lienzo extends JPanel {
         int row = mouseY / cellSize;
         int col = mouseX / cellSize;
         if (row >= 0 && row < rows && col >= 0 && col < cols) {
-            pixels[row][col] = currentColor.getRGB();
+            pixels[row][col] = Color.cyan.getRGB();
             repaint();
         }
     }

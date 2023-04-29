@@ -1,12 +1,11 @@
 package proyecto;
+import java.awt.BorderLayout;
 import java.awt.Color; 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -21,15 +20,15 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
     private JButton[] colorButtons;
     private Color[] colors = { Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA,
             Color.PINK, Color.WHITE, Color.GRAY, Color.BLACK };
+    public  Color SelectedColor;
 
     public Colores() {
        
-        setLayout(null);
-        setResizable(false);
-        
+        setLayout(new FlowLayout());
+ 
         // Color panel
         colorPanel = new JPanel();
-        colorPanel.setPreferredSize(new Dimension(10, 100));
+        colorPanel.setPreferredSize(new Dimension(100, 100));
         add(colorPanel);
 
         // Sliders
@@ -66,14 +65,7 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
 
       
 
-    private void setResizable(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
+    @Override
     public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < colorButtons.length; i++) {
             if (e.getSource() == colorButtons[i]) {
@@ -81,6 +73,8 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
                 redSlider.setValue(colors[i].getRed());
                 greenSlider.setValue(colors[i].getGreen());
                 blueSlider.setValue(colors[i].getBlue());
+                SelectedColor = new Color (redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue());
+                
             }
         }
     }
@@ -94,6 +88,13 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
         redLabel.setText("Red: " + redValue);
         greenLabel.setText("Green: " + greenValue);
         blueLabel.setText("Blue: " + blueValue);
+        SelectedColor = new Color (redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue());
+
+    }
+    
+    public Color getSelectedColor() {
+    	System.out.println(SelectedColor);
+        return SelectedColor;
     }
 
     

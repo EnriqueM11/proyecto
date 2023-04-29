@@ -5,10 +5,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.BorderLayout;
 
 public class main {
 
 	public static void main(String[] args) {
+		
+		
 		
 		JFrame frame = new JFrame("Lienzo");
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,7 +29,7 @@ public class main {
 	        }
 	    });
 	    
-	    
+	    colores.getSelectedColor();
 
 	    JPanel panelBotones = new JPanel();
 	    panelBotones.add(botonBorrar);
@@ -38,8 +43,11 @@ public class main {
 	    contentPane.add(color, BorderLayout.SOUTH);
 	    //contentPane.add(botonBorrar, BorderLayout.SOUTH);
 	    
+	    
 
 	    frame.setVisible(true);
+	    
+	    
 	    
 	  
 	    
