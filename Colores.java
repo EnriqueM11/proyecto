@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -20,12 +21,16 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
     private JButton[] colorButtons;
     private Color[] colors = { Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA,
             Color.PINK, Color.WHITE, Color.GRAY, Color.BLACK };
-    public  Color SelectedColor;
+    private Color scolor;
+
+    
+  
 
     public Colores() {
        
         setLayout(new FlowLayout());
- 
+        scolor= Color.GRAY;
+        
         // Color panel
         colorPanel = new JPanel();
         colorPanel.setPreferredSize(new Dimension(100, 100));
@@ -61,6 +66,8 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
             colorButtons[i].addActionListener(this);
             add(colorButtons[i]);
         }
+        
+
     }
 
       
@@ -73,29 +80,39 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
                 redSlider.setValue(colors[i].getRed());
                 greenSlider.setValue(colors[i].getGreen());
                 blueSlider.setValue(colors[i].getBlue());
-                SelectedColor = new Color (redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue());
-                
+                scolor= new Color (redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue());
+                setColor(scolor);             
             }
         }
+        
+        
     }
 
     @Override
     public void stateChanged(ChangeEvent e) {
+    	
         int redValue = redSlider.getValue();
         int greenValue = greenSlider.getValue(); 
         int blueValue = blueSlider.getValue();
-        colorPanel.setBackground(new Color(redValue, greenValue, blueValue));
+        colorPanel.setBackground(new Color (redValue,greenValue,blueValue));
         redLabel.setText("Red: " + redValue);
         greenLabel.setText("Green: " + greenValue);
         blueLabel.setText("Blue: " + blueValue);
-        SelectedColor = new Color (redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue());
-
+        
+        scolor= new Color (redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue());
+        setColor(scolor);
+      
     }
     
-    public Color getSelectedColor() {
-    	System.out.println(SelectedColor);
-        return SelectedColor;
+    public void setColor (Color color) {
+    	
+    	this.scolor=color;
     }
-
+    
+    public Color getColor () {
+    	
+    	return scolor;
+    }
+ 
     
 }

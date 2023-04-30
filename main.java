@@ -12,15 +12,15 @@ import java.awt.BorderLayout;
 public class main {
 
 	public static void main(String[] args) {
-		
-		
-		
+		Colores colores = new Colores();
+		lienzo lienzo = new lienzo(10, 10);
+	   
+
 		JFrame frame = new JFrame("Lienzo");
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setSize(1000, 1000);
 
-	    lienzo lienzo = new lienzo(10, 10);
-	    Colores colores = new Colores();
+	    
 
 	    JButton botonBorrar = new JButton("Borrar");
 	    botonBorrar.addActionListener(new ActionListener() {
@@ -28,8 +28,7 @@ public class main {
 	            lienzo.borrar();
 	        }
 	    });
-	    
-	    colores.getSelectedColor();
+	   
 
 	    JPanel panelBotones = new JPanel();
 	    panelBotones.add(botonBorrar);

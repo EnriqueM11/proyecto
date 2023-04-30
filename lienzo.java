@@ -1,29 +1,40 @@
 package proyecto;
 
 import java.awt.Color;
+
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.JButton;
 
-public class lienzo extends JPanel {
+public class lienzo extends JPanel implements ActionListener, ChangeListener {
 	
-	Colores colores = new Colores();
 
     private int[][] pixels;
     private int cellSize = 40;
     private int rows;
     private int cols;
-    //Color selectedColor = colores.getSelectedColor();
+   
     
+    Colores colores = new Colores();
     
+    Color scolor= new Color(colores.getColor().getRGB());
+
 
     public lienzo(int rows, int cols) {
     	
         this.rows = rows;
         this.cols = cols;
+
         pixels = new int[rows][cols];
+        
+   
       
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
@@ -33,22 +44,25 @@ public class lienzo extends JPanel {
         
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-                paintPixel(e.getX(), e.getY());
+                paintPixel(e.getX(), e.getY(), colores.getColor());
             }
         });
         addMouseMotionListener(new MouseAdapter() {
             public void mouseDragged(MouseEvent e) {
-                paintPixel(e.getX(), e.getY());
+                paintPixel(e.getX(), e.getY(), colores.getColor());
                 
             }
         });
+        
     }
+  
 
-    private void paintPixel(int mouseX, int mouseY) {
+    private void paintPixel(int mouseX, int mouseY, Color scolor) {
         int row = mouseY / cellSize;
         int col = mouseX / cellSize;
         if (row >= 0 && row < rows && col >= 0 && col < cols) {
-            pixels[row][col] = Color.cyan.getRGB();
+        	System.out.println(scolor);
+            pixels[row][col] = getColor().getRGB();
             repaint();
         }
     }
@@ -99,8 +113,9 @@ public class lienzo extends JPanel {
             }
         }
 		repaint();
-	}    
+	}
+
+
+	
     
 }
-
-
