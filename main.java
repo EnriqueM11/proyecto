@@ -8,18 +8,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.BorderLayout;
+import javax.swing.JFrame;
 
 public class main {
+	
 
 	public static void main(String[] args) {
-		Colores colores = new Colores();
-		lienzo lienzo = new lienzo(10, 10);
-	   
-
+		
+		
+		
 		JFrame frame = new JFrame("Lienzo");
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setSize(1000, 1000);
-
+	    
+	    Colores colores = new Colores();	    
+	    lienzo lienzo = new lienzo(10, 10);
+	  
 	    
 
 	    JButton botonBorrar = new JButton("Borrar");
@@ -28,29 +32,40 @@ public class main {
 	            lienzo.borrar();
 	        }
 	    });
-	   
+	    JButton enviarcolor = new JButton("actualizar color");
+	    botonBorrar.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	        	Color newColor = colores.getColor();
+	            lienzo.setPixelColor(newColor);
+
+	        }
+	    });
+	     
+	    
 
 	    JPanel panelBotones = new JPanel();
 	    panelBotones.add(botonBorrar);
-	    
-	    JPanel color = new JPanel();
-	    color.add(colores);
+	    panelBotones.add(enviarcolor);
 	   
+
 	    Container contentPane = frame.getContentPane();
 	    contentPane.setLayout(new BorderLayout());
+
+	   
 	    contentPane.add(lienzo, BorderLayout.CENTER);
-	    contentPane.add(color, BorderLayout.SOUTH);
-	    //contentPane.add(botonBorrar, BorderLayout.SOUTH);
+	    contentPane.add(colores, BorderLayout.SOUTH);
+	    contentPane.add(panelBotones, BorderLayout.WEST);
+
 	    
 	    
 
 	    frame.setVisible(true);
 	    
+	    frame.setLocationRelativeTo(null);
 	    
+	   	
 	    
-	  
-	    
-
 	}
-
+	
+	
 }
