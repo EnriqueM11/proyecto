@@ -20,7 +20,8 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
     private JButton[] colorButtons;
     private Color[] colors = { Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA,
             Color.PINK, Color.WHITE, Color.GRAY, Color.BLACK };
-    public  Color SelectedColor;
+    public  Color SelectedColor=Color.blue;
+ 
     
     
 
@@ -64,7 +65,7 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
             colorButtons[i].addActionListener(this);
             add(colorButtons[i]);
         }
-        SelectedColor= Color.BLUE;
+        
         
     }
 

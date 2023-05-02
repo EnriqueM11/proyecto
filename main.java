@@ -33,7 +33,7 @@ public class main {
 	        }
 	    });
 	    JButton enviarcolor = new JButton("actualizar color");
-	    botonBorrar.addActionListener(new ActionListener() {
+	    enviarcolor.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	Color newColor = colores.getColor();
 	            lienzo.setPixelColor(newColor);
