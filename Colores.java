@@ -20,7 +20,7 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
     private JButton[] colorButtons;
     private Color[] colors = { Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA,
             Color.PINK, Color.WHITE, Color.GRAY, Color.BLACK };
-    public  Color SelectedColor=Color.blue;
+    public  Color SelectedColor=Color.white;
  
     
     
@@ -103,7 +103,6 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
         Color newColor = new Color(redSlider.getValue(), greenSlider.getValue(), blueSlider.getValue());
         colorPanel.setBackground(newColor);
         SelectedColor=newColor;
-        System.out.println(SelectedColor);
         return SelectedColor;
     }
     

@@ -10,12 +10,12 @@ import javax.swing.JPanel;
 public class lienzo extends JPanel {
 
     private int[][] pixels;
-    private int cellSize = 40;
-    private int rows;
-    private int cols;
-    private Color selectedColor = Color.blue;
+    public int cellSize = 20;
+    private int rows=30;
+    private int cols=30;
+    private Color selectedColor = Color.white;
 
-    public lienzo(int rows, int cols) {
+    public lienzo() {
         this.rows = rows;
         this.cols = cols;
         pixels = new int[rows][cols];
@@ -98,4 +98,22 @@ public class lienzo extends JPanel {
         }
         repaint();
     }
+    
+    public Color[][] getPixels() {
+        Color[][] pixelsCopy = new Color[rows][cols];
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                pixelsCopy[row][col] = new Color(pixels[row][col]);
+            }
+        }
+        return pixelsCopy;
+    }
+
+
+
+	public void setPixels(Color[][] pixels2) {
+		// TODO Auto-generated method stub
+		this.pixels = pixels;
+        repaint();
+	}
 }
