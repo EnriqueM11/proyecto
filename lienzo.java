@@ -111,32 +111,6 @@ public class lienzo extends JPanel {
         return pixelsCopy;
     }
     
-    public void loadPixels(int[][] newPixels,BufferedImage image) {
-        if (newPixels.length == rows && newPixels[0].length == cols) {
-            for (int row = 0; row < rows; row++) {
-                for (int col = 0; col < cols; col++) {
-                    pixels[row][col] = newPixels[row][col];
-                }
-            }
-            repaint();
-        } else {
-            // Resize the canvas to match the new pixel array size
-            this.rows = newPixels.length;
-            this.cols = newPixels[0].length;
-            this.pixels = new int[rows][cols];
-            for (int row = 0; row < rows; row++) {
-                for (int col = 0; col < cols; col++) {
-                    pixels[row][col] = Color.WHITE.getRGB();
-                }
-            }
-            for (int row = 0; row < newPixels.length; row++) {
-                for (int col = 0; col < newPixels[0].length; col++) {
-                    pixels[row][col] = newPixels[row][col];
-                }
-            }
-            repaint();
-        }
-    }
 
 	public void setPixels(Color[][] pixels2) {
 		// TODO Auto-generated method stub
