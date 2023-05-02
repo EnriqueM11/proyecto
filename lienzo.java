@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
@@ -16,12 +17,11 @@ public class lienzo extends JPanel {
     private Color selectedColor = Color.white;
 
     public lienzo() {
-        this.rows = rows;
-        this.cols = cols;
+
         pixels = new int[rows][cols];
         
+        setOpaque(false); 
         
-
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 pixels[row][col] = Color.WHITE.getRGB();
@@ -38,6 +38,8 @@ public class lienzo extends JPanel {
                 paintPixel(e.getX(), e.getY());
             }
         });
+        
+        
     }
 
     
@@ -108,12 +110,60 @@ public class lienzo extends JPanel {
         }
         return pixelsCopy;
     }
-
-
+    
+    public void loadPixels(int[][] newPixels,BufferedImage image) {
+        if (newPixels.length == rows && newPixels[0].length == cols) {
+            for (int row = 0; row < rows; row++) {
+                for (int col = 0; col < cols; col++) {
+                    pixels[row][col] = newPixels[row][col];
+                }
+            }
+            repaint();
+        } else {
+            // Resize the canvas to match the new pixel array size
+            this.rows = newPixels.length;
+            this.cols = newPixels[0].length;
+            this.pixels = new int[rows][cols];
+            for (int row = 0; row < rows; row++) {
+                for (int col = 0; col < cols; col++) {
+                    pixels[row][col] = Color.WHITE.getRGB();
+                }
+            }
+            for (int row = 0; row < newPixels.length; row++) {
+                for (int col = 0; col < newPixels[0].length; col++) {
+                    pixels[row][col] = newPixels[row][col];
+                }
+            }
+            repaint();
+        }
+    }
 
 	public void setPixels(Color[][] pixels2) {
 		// TODO Auto-generated method stub
 		this.pixels = pixels;
         repaint();
 	}
+	
+	public void setCellSize(int size) {
+	    this.cellSize = size;
+	    repaint();
+	}
+
+	public void setGridSize(int rows, int cols) {
+	    this.rows = rows;
+	    this.cols = cols;
+	    pixels = new int[rows][cols];
+
+	    for (int row = 0; row < rows; row++) {
+	        for (int col = 0; col < cols; col++) {
+	            pixels[row][col] = Color.WHITE.getRGB();
+	        }
+	    }
+
+	    repaint();
+	}
+
+
+	
+	
 }

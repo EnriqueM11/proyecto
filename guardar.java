@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
-
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 
 public class guardar {
 	
@@ -42,7 +44,20 @@ public class guardar {
 	        }
 	    }
 	 
-
+	 
+	 public void open(File selectedFile) {
+		    try {
+		        BufferedImage image = ImageIO.read(selectedFile);
+		        // Mostrar la imagen en una ventana de diálogo
+		        ImageIcon icon = new ImageIcon(image);
+		        JOptionPane.showMessageDialog(null, icon);
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+		}
 }
+	 
+
+
 
 

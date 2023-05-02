@@ -18,8 +18,7 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
     private JLabel redLabel, greenLabel, blueLabel;
     private JSlider redSlider, greenSlider, blueSlider;
     private JButton[] colorButtons;
-    private Color[] colors = { Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA,
-            Color.PINK, Color.WHITE, Color.GRAY, Color.BLACK };
+    private Color[] colors = { Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE,  Color.WHITE, Color.GRAY, Color.BLACK };
     public  Color SelectedColor=Color.white;
  
     
@@ -28,11 +27,12 @@ public class Colores extends JPanel implements ActionListener, ChangeListener {
     public Colores() {
        
         setLayout(new FlowLayout());
+        setOpaque(false); 
         
  
         // Color panel
         colorPanel = new JPanel();
-        colorPanel.setPreferredSize(new Dimension(100, 100));
+        colorPanel.setPreferredSize(new Dimension(200, 200));
         add(colorPanel);
 
         // Sliders
