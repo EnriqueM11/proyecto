@@ -10,6 +10,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.IOException;
 import java.awt.BorderLayout;
 

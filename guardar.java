@@ -19,12 +19,12 @@ public class guardar {
 		 
 	 }
 	 
-	 public void save(lienzo lienzo, String nombreArchivo) {
-	        // Obtener la matriz de colores actual
-	        Color[][] pixels = lienzo.getPixels();
+	 public void save(lienzo lienzo, String nombreArchivo ) {
+		    // Obtener la matriz de colores actual
+		    Color[][] pixels = lienzo.getPixels();
 
-	        // Crear una nueva imagen y dibujar los pixeles
-	        BufferedImage image = new BufferedImage(pixels[0].length * lienzo.cellSize, pixels.length * lienzo.cellSize, BufferedImage.TYPE_INT_RGB);
+		    // Crear una nueva imagen y dibujar los pixeles
+		    BufferedImage image = new BufferedImage(pixels[0].length * lienzo.cellSize, pixels.length * lienzo.cellSize, BufferedImage.TYPE_INT_RGB);
 		    Graphics2D g = image.createGraphics();
 		    g.setBackground(Color.WHITE); // Configurar el color de fondo
 		    g.clearRect(0, 0, image.getWidth(), image.getHeight()); // Limpiar la imagen
@@ -35,14 +35,18 @@ public class guardar {
 		        }
 		    }
 
-	        // Guardar la imagen en un archivo
-	        try {
-	            ImageIO.write(image, "jpg", new File(nombreArchivo + ".jpg"));
-	           JOptionPane.showMessageDialog(null, "Imagen guardada con exito");
-	        } catch (IOException e) {
-	        	JOptionPane.showMessageDialog(null, "Imagen guardada con exito"+ e.getMessage());
-	        }
-	    }
+		    // Guardar la imagen en un archivo
+		    try {
+		    	 ImageIO.write(image, "jpg", new File(nombreArchivo + ".jpg"));
+		           JOptionPane.showMessageDialog(null, "Imagen con formato jpg guardada con exito");
+		           ImageIO.write(image, "png", new File(nombreArchivo + ".png"));
+		           JOptionPane.showMessageDialog(null, "Imagen con formato png guardada con exito");
+		           ImageIO.write(image, "gif", new File(nombreArchivo + ".gif"));
+		           JOptionPane.showMessageDialog(null, "Imagen con formato gif guardada con exito");
+		    } catch (IOException e) {
+		        JOptionPane.showMessageDialog(null, "Error al guardar la imagen: ");
+		    }
+		}
 	 
 	 
 	 public void open(File selectedFile) {
@@ -55,6 +59,7 @@ public class guardar {
 		        e.printStackTrace();
 		    }
 		}
+	 
 }
 	 
 
