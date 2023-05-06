@@ -52,18 +52,18 @@ public class guardar {
 		}
 	 
 	 
-	 public void open(File selectedFile, int cellSize) {
-		 try {
-             BufferedImage image = ImageIO.read(selectedFile); // Lee la imagen del archivo
-             lienzo lienzo2 = new lienzo();
-			lienzo2.setImage(image); // Establece la imagen en el lienzo
-         } catch (IOException ex) {
-             ex.printStackTrace();
-         }
-		   
-		}
+	 public void open(File selectedFile) {
+		    try {
+		        BufferedImage image = ImageIO.read(selectedFile);
+		        // Mostrar la imagen en una ventana de diálogo
+		        ImageIcon icon = new ImageIcon(image);
+		        JOptionPane.showMessageDialog(null, icon);
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
 	 
 }
+}	 
 	 
 
 

@@ -87,7 +87,7 @@ public class main {
 	            // Si se selecciona un archivo, abrir la imagen con el método open de la clase Guardar
 	            if (result == JFileChooser.APPROVE_OPTION) {
 	                File selectedFile = fileChooser.getSelectedFile();
-	                guardar.open(selectedFile, lienzo.cellSize);
+	                guardar.open(selectedFile);
 	            }
 	        }
 	    });

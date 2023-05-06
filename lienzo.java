@@ -142,14 +142,5 @@ public class lienzo extends JPanel {
 	    repaint();
 	}
 	
-	  public void setImage(BufferedImage image) {  
-		  g2d = img.createGraphics();                    // Crea un objeto Graphics2D a partir de la imagen en memoria.
-	        g2d.setColor(selectedColor);         
-	        
-	        img = image;
-	        g2d = img.createGraphics();                   
-	        repaint();                                    
-	    }
-
 	
 }
