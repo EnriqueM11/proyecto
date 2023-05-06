@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
@@ -12,6 +13,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 
 public class guardar {
+	
+
 	
 	lienzo lienzo = new lienzo();
 	
@@ -49,15 +52,15 @@ public class guardar {
 		}
 	 
 	 
-	 public void open(File selectedFile) {
-		    try {
-		        BufferedImage image = ImageIO.read(selectedFile);
-		        // Mostrar la imagen en una ventana de diálogo
-		        ImageIcon icon = new ImageIcon(image);
-		        JOptionPane.showMessageDialog(null, icon);
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		    }
+	 public void open(File selectedFile, int cellSize) {
+		 try {
+             BufferedImage image = ImageIO.read(selectedFile); // Lee la imagen del archivo
+             lienzo lienzo2 = new lienzo();
+			lienzo2.setImage(image); // Establece la imagen en el lienzo
+         } catch (IOException ex) {
+             ex.printStackTrace();
+         }
+		   
 		}
 	 
 }

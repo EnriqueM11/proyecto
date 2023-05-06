@@ -2,6 +2,7 @@ package proyecto;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -15,6 +16,9 @@ public class lienzo extends JPanel {
     private int rows=30;
     private int cols=30;
     private Color selectedColor = Color.white;
+    private BufferedImage img;                         // Imagen en el lienzo.
+    private Graphics2D g2d;   
+    
 
     public lienzo() {
 
@@ -42,12 +46,13 @@ public class lienzo extends JPanel {
         
     }
 
-    
 
-    protected void paintComponent(Graphics g) {
+
+	protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         draw(g);
         drawGrid(g);
+       
     }
 
     private void draw(Graphics g) {
@@ -136,8 +141,15 @@ public class lienzo extends JPanel {
 
 	    repaint();
 	}
-
-
 	
+	  public void setImage(BufferedImage image) {  
+		  g2d = img.createGraphics();                    // Crea un objeto Graphics2D a partir de la imagen en memoria.
+	        g2d.setColor(selectedColor);         
+	        
+	        img = image;
+	        g2d = img.createGraphics();                   
+	        repaint();                                    
+	    }
+
 	
 }
